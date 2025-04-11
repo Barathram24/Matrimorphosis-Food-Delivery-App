@@ -13,11 +13,36 @@ body {
     flex-direction: row;
     justify-content: space-between;
     gap: 2rem;
-    padding: 2rem;
+    padding: 0px;
     max-width: 1200px;
     margin: auto;
+    position: relative;
+  z-index: 1;
+      // width: 100%;
+      // height: 100vh;
+      // background-image: url('/Background.jpg');
+      // background-size: cover;
+      // background-position: center;
+      // background-repeat: no-repeat;
   }
-  
+  .background{
+    width: 100%;
+      height: 100vh;
+      background-image: url('/Background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+  }
+  .background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Light black overlay */
+    z-index: 0;
+  }
   .checkout-left {
     flex: 2;
   }
@@ -37,9 +62,30 @@ body {
     h2 {
       margin: 0.5rem 0;
       font-weight: 600;
+      color: rgb(0, 0, 0);
+      background-color:#e8e8e8;;
+      border-radius: 10px;
+      align-items: center;
+      text-align: center;
     }
   }
+  .header {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+  .header h2 {
+  margin: 0.5rem auto;
+  padding: 5px 200px;
   
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  // background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+  text-align: center;
+  width: fit-content;
+}
+
   .cart-card {
     padding: 2rem;
     border-radius: 16px;
