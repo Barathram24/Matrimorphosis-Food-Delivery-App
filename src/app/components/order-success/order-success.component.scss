@@ -1,0 +1,59 @@
+.success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f3fff7;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .success-animation {
+    text-align: center;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease;
+  }
+  .order{
+    background-color: #ffc107ac;
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  .order:hover{
+    background-color:  #ffb300;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  .checkmark-circle {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    background-color: #4caf50;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: pop 0.3s ease;
+  }
+  
+  .checkmark {
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+  }
+  
+  @keyframes pop {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  

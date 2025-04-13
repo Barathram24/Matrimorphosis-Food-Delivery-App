@@ -4,40 +4,64 @@
     <div class="checkout-left">
       <div class="header">
         
-        <h2>order checkout</h2>
+        
       </div>
   
       <mat-card class="cart-card">
         <div class="cart-header">
+
           <span class="back">← Back</span>
-          <h3>🛒 My cart</h3>
-          <button mat-raised-button color="accent" (click)="openAddressPopup()">Add Details</button>  
+          <h2>Order Checkout</h2>
+          <h3>🛒 My Cart</h3>
         </div>
-  
-        <div class="item" *ngFor="let item of selectedItems">
-          <div class="item-info">
-            <img src="https://via.placeholder.com/80" class="item-img" alt="{{ item.name }}" />
+        <div class="resname" *ngFor="let item of selectedItems;let i = index">
+          <div *ngIf="i === 0 || item.restaurantId !== selectedItems[i - 1].restaurantId" class="restaurant-info">
+            <img [src]="item.image" alt="Restaurant" class="restaurant-image">
             <div>
-              <strong>{{ item.name }}</strong>
+              <h3>{{ item.restaurantName }}</h3>
+              <small>{{ item.restaurantLocation }}</small>
+            </div>
+          </div>
+          </div>
+        <div class="item" *ngFor="let item of selectedItems;let i = index">
+          
+          <div class="item-info">
+           
+            <img [src]="item.image" alt="{{ item.itemName }}">
+            <div>
+              
+              <div class="item-name">{{ item.itemName }}</div>
               <p class="item-desc">{{ item.description || 'No description available' }}</p>
               <p class="item-mod">Without cutlery</p>
             </div>
           </div>
-          <div class="item-price">
-            <span>1X</span>
-            <span>₹{{ item.price }}</span>
+          <div class="quantity-controls">
+            <button (click)="decreaseQty(item)">−</button>
+            <span>{{ item.qty }}</span>
+            <button (click)="increaseQty(item)">+</button>
+            <span>₹{{ item.qty * item.price }}</span>
           </div>
+          
+          
         </div>
   
         <div class="discount-section">
-          <button mat-stroked-button color="accent">➕ Add discount</button>
+          <div class="left-button">
+            <button class="add-discount-btn" (click)="openDiscountPopup()">➕ Add discount</button>
+          </div>
+          <div class="right-button">
+            <button  class="add-details-btn" (click)="openAddressPopup()">Add Details</button>
+          </div>
         </div>
+        
   
         <div class="pricing">
-          <div><span>Subtotal</span><span>₹{{ subtotal }}</span></div>
-          <div><span>Delivery fee</span><span>₹2.00</span></div>
+          <h3>Bill Details</h3>
+          <div><span>Item total</span><span>₹{{ subtotal }}</span></div>
+          <div class="DI-line"><span>Delivery fee</span><span>₹{{ delivery }}</span></div>
           <div><span>Discount</span><span>-₹{{ discount }}</span></div>
-          <div class="total"><strong>TOTAL</strong><strong>₹{{ total + 2 - discount }}</strong></div>
+          <div><span>GST & Other Charges</span><span>₹{{ subtotal*0.12 | number:'1.2-2'}}</span></div>
+          <div class="total"><strong>TOTAL</strong><strong>₹{{ subtotal + delivery - discount+subtotal* 0.12 | number:'1.2-2'}}</strong></div>
         </div>
       </mat-card>
     </div>
@@ -45,14 +69,16 @@
     <div class="checkout-right">
       <mat-card class="summary-card">
         <h3>Total payment</h3>
-        <div class="summary-line"><span>Subtotal</span><span>₹{{ subtotal }}</span></div>
-        <div class="summary-line"><span>Delivery fee</span><span>₹2.00</span></div>
+        <div class="summary-line"><span>Item total</span><span>₹{{ subtotal }}</span></div>
+        <div class="summary-line"><span>Delivery fee</span><span>₹{{delivery}}</span></div>
         <div class="summary-line"><span>Discount</span><span>-₹{{ discount }}</span></div>
+        <div class="summary-line"><span>GST</span><span>₹{{ subtotal*0.12 | number:'1.2-2'}}</span></div>
   
-        <div class="summary-line paid"><span>Paid</span><span>₹45.00</span></div>
-        <div class="summary-line remain"><strong>Remaining</strong><strong>₹{{ total + 2 - discount - 45 }}</strong></div>
+        <div class="summary-line paid"><span> </span><span></span></div>
+        <div class="summary-line paid"><strong>Total </strong><strong>₹{{ subtotal +delivery - discount+subtotal * 0.12 | number:'1.2-2' }}
+        </strong></div>
   
-        <button mat-raised-button color="primary" class="send-btn">Send order</button>
+        <button class="send-btn" (click)="sendOrder()">Send order</button>
   
         <p class="note">
           In the case of a group order, the delivery cost is paid individually and the balance is refunded based on the total amount.

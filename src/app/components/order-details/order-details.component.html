@@ -1,0 +1,97 @@
+<div class="order-details-container">
+  <div class="main-section">
+    <div class="order-header">
+      <button class="back" (click)="goToCheckout()">Back</button>
+      <!-- <span class="back" onclick="goToCheckout()">← Back</span> -->
+      <h2>Order-id: {{order.orderid}} <span class="badge paid">Paid</span> <span class="badge unfulfilled">Unfulfilled</span></h2>
+      <p>Order date: Apr 14, 2023 · Order from <strong>{{ customer.name }}</strong> · Purchased via online</p>
+    </div>
+
+    <div class="order-status">
+      <!-- <ul class="status-bar">
+        <li class="active">Review order</li>
+        <li>Preparing order</li>
+        <li>Shipping</li>
+        <li>Delivered</li>
+      </ul> -->
+      <div class="actions">
+        <button class="cancelbtn">Cancel Order</button>
+        <button class="trackbtn">Track Order</button>
+      </div>
+    </div>
+
+    <div class="product-section">
+      <h3>Products</h3>
+      <div class="product-item" *ngFor="let item of selectedItems">
+        <img [src]="item.image" alt="{{ item.name }}">
+        <div class="product-info">
+          <h4>{{ item.name }}</h4>
+          <!-- <p>SKU: {{ item.sku }}</p> -->
+          <!-- {{ item.color }}  -->
+          <p>{{ item.description }}</p>
+          <p>Quantity: {{ item.qty }}</p>
+        </div>
+        <div class="product-status">Unfulfilled</div>
+        <div class="product-price">₹{{ item.price }}</div>
+      </div>
+    </div>
+
+    <div class="payment-details">
+      <h3>Payment Details</h3>
+      <!-- <p><strong>Payment Method:</strong> <span class="card">💳 **** {{ paymentMethod.last4 }}</span></p> -->
+      <div><span>Item total: </span><strong>₹{{ subtotal }}</strong></div>
+      <div><span>delivery fee: </span><strong>₹{{ deliveryfee }}</strong></div>
+      <div><span>Discount: </span><strong>-₹{{ discount }}</strong></div>
+      <div class="gst"><span>GST & Other Charges: </span><strong>₹{{ gst }}</strong></div>
+      <div class="total"><strong>TOTAL: </strong><strong>₹{{ total | number:'1.2-2'}}</strong></div>
+      <p class="shipping-note">Thanks for placing order at our resturant, Keep Ordering</p>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="order-note">
+      <h4>Order Note</h4>
+      <p>Carry With care</p>
+    </div>
+
+    <div class="customer-info">
+      <h4>Customer Details</h4>
+      <p><strong>{{ customer.name }}</strong></p>
+      <p>Total: {{ customer.totalOrders }} order(s)</p>
+    </div>
+
+    <div class="shipping-address">
+      <h4>Delivery Address</h4>
+      <p>{{ shippingAddress.name }}</p>
+      <p>{{ shippingAddress.houseno }}, {{ shippingAddress.streetname }},</p>
+      <p>{{ shippingAddress.city }}, {{ shippingAddress.state }}, </p>
+      <p>{{ shippingAddress.pincode }} </p>
+    </div>
+
+    <div class="contact-info">
+      <h4>Contact Information</h4>
+      <p>{{ contact.email }}</p>
+      <p>{{ contact.phone }}</p>
+    </div>
+    <div class="res-info">
+      <h4>Resturant Details</h4>
+      <p>{{ resturant.name }}</p>
+      <p>{{  resturant.location }}</p>
+      <p>{{  resturant.fassai }}</p>
+    </div>
+    <div class="map-section">
+      <h4>Delivery Location</h4>
+      <iframe
+        width="100%"
+        height="150"
+        style="border:1px; border-radius: 8px;"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        [src]="mapUrl"
+>
+      </iframe>
+    </div>
+    
+  </div>
+</div>

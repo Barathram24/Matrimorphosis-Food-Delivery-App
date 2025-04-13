@@ -1,11 +1,11 @@
 body {
-    font-family: 'Poppins', sans-serif;
+  font-family: 'Segoe UI', sans-serif;
     background-color: #f9f9f9;
     color: #333;
   }
   
   h2, h3, h4 {
-    font-family: 'Playfair Display', serif;
+  font-family: 'Segoe UI', sans-serif;
   }
   
 .checkout-wrapper {
@@ -15,6 +15,7 @@ body {
     gap: 2rem;
     padding: 0px;
     max-width: 1200px;
+    max-height:none;
     margin: auto;
     position: relative;
   z-index: 1;
@@ -25,33 +26,60 @@ body {
       // background-position: center;
       // background-repeat: no-repeat;
   }
-  .background{
+  .background {
+    position: relative; /* Important for ::before positioning */
+    min-height: 100vh; /* Ensures it covers at least full screen */
     width: 100%;
-      height: 100vh;
-      background-image: url('/Background.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+    background-image: url('/background all.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
   }
+  
   .background::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3); /* Light black overlay */
-    z-index: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent overlay */
+    z-index: 1;
+    pointer-events: none; /* Allows clicks to go through */
   }
   .checkout-left {
     flex: 2;
   }
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
   
+  .quantity-controls button {
+    background-color: #ffc10733;
+    border: none;
+    padding: 4px 8px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .quantity-controls button:hover{
+    background-color: #ffc1077a;
+    border: none;
+    padding: 4px 8px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
   .checkout-right {
     margin-top: 6%;
     flex: 1;
   }
-  
+  .resname h3,small{
+    margin: 0px;
+  }
   .header {
     margin-bottom: 1rem;
     .back {
@@ -63,8 +91,8 @@ body {
       margin: 0.5rem 0;
       font-weight: 600;
       color: rgb(0, 0, 0);
-      background-color:#e8e8e8;;
-      border-radius: 10px;
+      background-color:#ffffff;;
+      border-radius: 5px;
       align-items: center;
       text-align: center;
     }
@@ -81,14 +109,16 @@ body {
   font-weight: 600;
   color: rgb(0, 0, 0);
   // background-color: rgb(255, 255, 255);
-  border-radius: 12px;
+  border-radius: 5px;
   text-align: center;
   width: fit-content;
 }
 
   .cart-card {
     padding: 2rem;
-    border-radius: 16px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    margin-bottom: 50px;
   }
   
   .cart-header {
@@ -96,25 +126,45 @@ body {
     justify-content: space-between;
     align-items: center;
   }
+  .cart-header h2{
+    font-weight: bold;
+  }
+  .restaurant-info {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 0.75rem;
+    border-bottom: 1px solid #616060;
+    padding-bottom: 0.5rem;
+  }
+  
+  .restaurant-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
   
   .item {
     display: flex;
+    font-weight: 600;
+    font-family: 'Segoe UI', sans-serif;
     justify-content: space-between;
     margin-top: 1.5rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid #eeeeee;
   }
-  
+  .item-info img
+  {
+    width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  }
   .item-info {
     display: flex;
     gap: 1rem;
-  
-    .item-img {
-      width: 80px;
-      height: 80px;
-      border-radius: 8px;
-      object-fit: cover;
-    }
   
     .item-desc {
       margin: 0.2rem 0;
@@ -138,38 +188,109 @@ body {
   .discount-section {
     margin-top: 1.5rem;
   }
+  .discount-section button{
+    padding: 10px;
+  }
+  .discount-section {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .left-button, .right-button {
+    flex: 1;
+  }
+  
+  .left-button {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .right-button {
+    display: flex;
+    justify-content: flex-end;
+    padding-left: 10px;
+  }
+  
+  .add-discount-btn,
+  .add-details-btn {
+    padding: 10px 34px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+  }
+  
+  .add-discount-btn {
+    background-color: #ffc107ac;
+    color: rgb(0, 0, 0);
+    border: none;
+  }
+  
+  .add-discount-btn:hover {
+    background-color:  #ffb300;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+    cursor: pointer;
+  }
+  
+  .add-details-btn {
+    background-color: #ffc107ac;
+    color: #000;
+    border: none;
+  }
+  
+  .add-details-btn:hover {
+    background-color:  #ffb300;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+    cursor: pointer;
+  }
+  
   
   .pricing {
     margin-top: 2rem;
     font-size: 0.95rem;
+    background-color: #f9f6ea;
+    padding: 20px;
+    border-radius: 10px;
   
     div {
       display: flex;
       justify-content: space-between;
       margin-bottom: 0.5rem;
     }
+    .DI-line{
+      border-bottom: 1px solid #b1aeae;
+      padding-bottom: 15px;
+    }
   
     .total {
-      font-weight: bold;
-      font-size: 1.1rem;
+      border-top: 1px solid #000000;
+      padding: 25px 0px;
+      font-weight: 600;
+      font-size: 20px;
       margin-top: 1rem;
+      color: #5a4805;
     }
   }
   
-  button:hover{
-    background-color: #ffc107;
-    color: #000000;
-    font-weight: 500;
-    font-family: 'Poppins', sans-serif;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    transform: translateY(-1px);
-    cursor: pointer;
-    border: none;
-    transition: all 0.3s ease;
-  }
+  // button:hover{
+  //   background-color: #ffc107;
+  //   color: #000000;
+  //   font-weight: 500;
+  //   font-family: 'Poppins', sans-serif;
+  //   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  //   transform: translateY(-1px);
+  //   cursor: pointer;
+  //   border: none;
+  //   transition: all 0.3s ease;
+  // }
   .summary-card {
     padding: 2rem;
-    border-radius: 16px;
+    border-radius: 5px;
+    background-color: white;
   
     h3 {
       margin-bottom: 1rem;
@@ -203,7 +324,7 @@ body {
     }
   }
   .confirm-btn, .send-btn {
-    background-color: #ffc107;
+    background-color: #ffc107ac;
     color: #000;
     border-radius: 8px;
     font-weight: 600;
