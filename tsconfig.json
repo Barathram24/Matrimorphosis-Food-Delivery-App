@@ -13,15 +13,18 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "ES2022"
+    "module": "ESNext"
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
+  },
+  "ts-node": {
+    "esm": true
   }
 }
