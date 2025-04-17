@@ -5,10 +5,11 @@ import { MatCardModule } from '@angular/material/card'; // for mat-card
 import { MatButtonModule } from '@angular/material/button'; // for mat-button
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Pipe, PipeTransform } from '@angular/core';
+import { CancelOrderModalComponent } from '../../cancel-order-modal/cancel-order-modal.component';
 
 @Component({
   selector: 'app-order-details',
-  imports: [CommonModule, MatCardModule, MatButtonModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule, CancelOrderModalComponent],
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.scss']  // not `styleUrl`
 })
@@ -72,6 +73,7 @@ resturant={
   gst=58;
   discount=0;
   total = 7508.02;
+  showCancelModal = false;
 
   trackingStatus = 'Your order is out for delivery 🚴';
 
@@ -83,6 +85,9 @@ resturant={
   }
   cancelOrder() {
     this.router.navigate(['./order-sucess']);
+  }
+  trackOrder() {
+    this.router.navigate(['./track-order']);
   }
   goToHome() {
     this.router.navigate(['./order-sucess']);

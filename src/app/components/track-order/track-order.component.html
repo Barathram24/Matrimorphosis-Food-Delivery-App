@@ -1,0 +1,37 @@
+<div class="track-container">
+    <button class="back-btn" (click)="location.back()">← Back</button>
+
+    <h2>Track Your Order</h2>
+
+    <div class="progress-bar">
+        <div *ngFor="let stage of stages; let i = index" class="stage-container">
+            <div class="dot" [ngClass]="{
+          'completed': i < currentStage,
+          'active': i === currentStage
+        }">
+                <span *ngIf="i < currentStage">✔</span>
+                <span *ngIf="i >= currentStage">{{ i + 1 }}</span>
+            </div>
+            <div class="label">{{ stage }}</div>
+            <div class="line" *ngIf="i < stages.length - 1" [ngClass]="{ 'completed': i < currentStage }"></div>
+        </div>
+    </div>
+
+    <div *ngIf="currentStage < stages.length - 1" class="eta">
+        Estimated Time: {{ countdownDisplay }}
+    </div>
+
+    <!-- Feedback Section -->
+    <div *ngIf="currentStage === stages.length - 1" class="feedback-form">
+        <h3>Rate Your Order</h3>
+
+        <div class="stars">
+            <ng-container *ngFor="let star of [1,2,3,4,5]">
+                <span (click)="setRating(star)" [class.filled]="star <= rating">★</span>
+            </ng-container>
+        </div>
+
+        <textarea [(ngModel)]="feedback" placeholder="Optional feedback..."></textarea>
+        <button class="submit-btn" (click)="submitFeedback()">Submit</button>
+    </div>
+</div>

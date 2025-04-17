@@ -3,6 +3,7 @@ import { OrderCheckoutComponent } from './components/order-checkout/order-checko
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
 import { RouterModule } from '@angular/router';
+import { TrackOrderComponent } from './track-order/track-order.component';
 export const routes: Routes = [
   
   {
@@ -13,5 +14,9 @@ export const routes: Routes = [
   {
     path: 'order-details',
     component: OrderDetailsComponent
+  },
+  {
+    path: 'track-order',
+    component: TrackOrderComponent
   }
 ];
