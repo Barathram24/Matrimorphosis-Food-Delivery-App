@@ -111,9 +111,8 @@ public updatecart(){
       deliveryAddress: ['', Validators.required]
     });
     this.fetchdetails();
-    // this.updatecart();
+    this.updatecart();
 // this.loadCartItems();
-    this.placeOrder();
     this.calculateTotals();
   }
   // loadCartItems() {
@@ -214,23 +213,16 @@ decreaseQty(item: any) {
   placeOrder() {
     if (this.checkoutForm.valid) {
       const payload = {
-        user_id: 1,
+        items: this.selectedItems,
         deliveryAddress: this.checkoutForm.value.deliveryAddress,
         subtotal: this.subtotal,
         tax: this.tax,
         discount: this.discount,
-        delivery: this.delivery,
         total: this.total,
+        delivery: this.delivery
       };
-  
-      this.http.post('http://localhost:3000/orders', payload).subscribe({
-        next: (res: any) => {
-          console.log('Order Placed:', res);
-          this.router.navigate(['/order-success']);
-        },
-        error: (err) => console.error('Order failed:', err)
-      });
+
+      console.log('Order Placed:', payload);
     }
   }
-  
 }

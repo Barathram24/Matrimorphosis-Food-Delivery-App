@@ -5,7 +5,7 @@
       <!-- <span class="back" onclick="goToCheckout()">← Back</span> -->
       <h2>Order-id: {{item.id}} <span class="badge paid">Paid</span> <span
           class="badge unfulfilled">Unfulfilled</span></h2>
-      <p>Order date: Apr 14, 2023 · Order from <strong>{{ item.contact_name }}</strong> · Purchased via online</p>
+      <p>Order date: {{item.created_at  | date:'MMM d y' }} · Order from <strong>{{ item.contact_name }}</strong> · Purchased via online</p>
     </div>
 
     <div class="order-status">
@@ -41,14 +41,14 @@
 
     <div class="payment-details">
       <h3>Payment Details</h3>
-      <!-- <p><strong>Payment Method:</strong> <span class="card">💳 **** {{ paymentMethod.last4 }}</span></p> -->
       <div><span>Item total: </span><strong>₹{{ subtotal }}</strong></div>
-      <div><span>delivery fee: </span><strong>₹{{ deliveryfee }}</strong></div>
+      <div><span>Delivery fee: </span><strong>₹{{ deliveryfee }}</strong></div>
       <div><span>Discount: </span><strong>-₹{{ discount }}</strong></div>
-      <div class="gst"><span>GST & Other Charges: </span><strong>₹{{ gst }}</strong></div>
-      <div class="total"><strong>TOTAL: </strong><strong>₹{{ total | number:'1.2-2'}}</strong></div>
+      <div class="gst"><span>GST & Other Charges: </span><strong>₹{{ gst | number:'1.2-2' }}</strong></div>
+      <div class="total"><strong>TOTAL: </strong><strong>₹{{ total | number:'1.2-2' }}</strong></div>
       <p class="shipping-note">Thanks for placing order at our resturant, Keep Ordering</p>
     </div>
+    
   </div>
 
   <div class="sidebar">
@@ -76,11 +76,17 @@
       <p>{{ item.contact_name }}</p>
       <p>{{ item.contact_number }}</p>
     </div>
-    <div class="res-info" *ngFor="let item of orderpro.orders">
-      <h4>Resturant Details</h4>
-      <p>{{ item.restaurant_name }}</p>
-      <p>{{  resturant.location }}</p>
-      <p>{{  resturant.fassai }}</p>
+    <div class="res-info">
+      <h4>Restaurant Details</h4>
+      <p>{{ orderpro.orders[0]?.restaurant_name }}</p>
+      <div *ngFor="let it of loc">
+        <p>{{ it.restaurant_location }}</p>
+      </div>
+      <p>{{ resturant.fassai }}</p>
+    </div>
+    
+    <div>
+
     </div>
     <div class="map-section">
       <h4>Delivery Location</h4>

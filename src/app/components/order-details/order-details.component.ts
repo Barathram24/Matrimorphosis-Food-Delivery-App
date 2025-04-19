@@ -81,20 +81,37 @@ resturant={
   public orderdet:any[] = [];
   public orderpro:any=null;
   public proname:any[]=[];
+  public loc:any[]=[];
+  location(){
+    this.http.get('http://localhost:3000/cart?user_id=1').subscribe((res:any)=>{
+      this.loc=res.data;
+    })
+  }
   fetchorder(){
     this.http.get('http://localhost:3000/orders?user_id=1').subscribe((res: any) => {
       this.orderdet = res.data;
       this.orderpro=res.data[0];
       // this.proname=res.data[0];
       // this.orderdet.orders.forEach((item: any))
+      if (this.orderdet.length > 0) {
+        this.orderpro = this.orderdet[0]; // This includes contact, address, and orders
+        const items = this.orderpro.orders || [];
+      this.subtotal = items.reduce((acc: number, item: any) => {
+        const itemTotal = (item.product_price || 0) * (item.qty || 1);
+        return acc + itemTotal;
+      }, 0);
+      this.gst=this.subtotal*0.18;
+      this.customer.totalOrders = items.length;
+      this.total = this.subtotal + this.deliveryfee + this.gst - this.discount;
       console.log("Pro item",this.proname);
       console.log("order Items:", this.orderdet);
-  })}
+  }})}
   ngOnInit() {
     const address = `${this.shippingAddress.houseno} ${this.shippingAddress.streetname}, ${this.shippingAddress.city}, ${this.shippingAddress.state} ${this.shippingAddress.pincode}`;
     const googleMapLink = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
     this.mapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(googleMapLink);
     this.fetchorder();
+    this.location();
   }
  
   cancelOrder() {

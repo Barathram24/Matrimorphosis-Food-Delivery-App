@@ -7,15 +7,16 @@ import { TrackOrderComponent } from './components/track-order/track-order.compon
 import { HomeComponent } from './components/restaurant-main/home/home.component';
 import { RestaurantListComponent } from './components/restaurant-main/restaurant-list/restaurant-list.component';
 import { RestaurantDetailComponent } from './components/restaurant-main/restaurant-detail/restaurant-detail.component';
+
 export const routes: Routes = [
   // { path: '', component: HomeComponent },
-  {
-    path: '',
-    component: OrderCheckoutComponent
-  },
+  // {
+  //   path: '',
+  //   component: OrderCheckoutComponent
+  // },
   { path: 'order-success', component: OrderSuccessComponent},
   {
-    path: 'order-details',
+    path: '',
     component: OrderDetailsComponent
   },
   {
@@ -25,3 +26,4 @@ export const routes: Routes = [
   { path: 'restaurants', component: RestaurantListComponent }, // restaurant listing
     { path: 'restaurant/:id', component: RestaurantDetailComponent }
 ];
+
