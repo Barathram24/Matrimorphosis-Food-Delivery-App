@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { HomeComponent } from './components/home/home.component';
-import { RestaurantListComponent } from './components/restaurant-list/restaurant-list.component';
-import { RestaurantDetailComponent } from './components/restaurant-detail/restaurant-detail.component'; // ✅ Add this line if not already
+import { RestaurantListComponent } from './components/restaurant-main/restaurant-list/restaurant-list.component';
+import { RestaurantDetailComponent } from './components/restaurant-main/restaurant-detail/restaurant-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, // homepage
   { path: 'restaurants', component: RestaurantListComponent }, // restaurant listing
-  { path: 'restaurant/:id', component: RestaurantDetailComponent } // ✅ detail route with comma above
+  { path: 'restaurant/:id', component: RestaurantDetailComponent } // detail page
 ];
 
 @NgModule({
@@ -15,4 +16,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-

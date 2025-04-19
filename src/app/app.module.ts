@@ -6,12 +6,12 @@ import { RouterModule } from '@angular/router'; // ✅ Needed for router-outlet
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { SearchSectionComponent } from './components/search-section/search-section.component';
-import { ServiceCardsComponent } from './components/service-cards/service-cards.component';
-import { RestaurantListComponent } from './components/restaurant-list/restaurant-list.component';
-import { HomeComponent } from './components/home/home.component';
-import { RestaurantDetailComponent } from './components/restaurant-detail/restaurant-detail.component';
+import { HeaderComponent } from './components/restaurant-main/header/header.component';
+import { SearchSectionComponent } from './components/restaurant-main/search-section/search-section.component';
+import { ServiceCardsComponent } from './components/restaurant-main/service-cards/service-cards.component';
+import { RestaurantListComponent } from './components/restaurant-main/restaurant-list/restaurant-list.component';
+import { HomeComponent } from './components/restaurant-main/home/home.component';
+import { RestaurantDetailComponent } from './components/restaurant-main/restaurant-detail/restaurant-detail.component';
 
 // ✅ Import the service here
 import { RestaurantService } from './services/restaurant.service';
@@ -29,8 +29,8 @@ import { RestaurantService } from './services/restaurant.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule, // ✅ Required for backend API calls
-    RouterModule       // ✅ Required for <router-outlet>
+    HttpClientModule,
+    RouterModule
   ],
   providers: [RestaurantService],
   bootstrap: [AppComponent]
