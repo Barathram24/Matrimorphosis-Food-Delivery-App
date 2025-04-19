@@ -1,11 +1,11 @@
 <div class="order-details-container">
   <div class="main-section">
-    <div class="order-header">
+    <div class="order-header" *ngFor="let item of orderdet">
       <button class="back" (click)="goToCheckout()">Back</button>
       <!-- <span class="back" onclick="goToCheckout()">← Back</span> -->
-      <h2>Order-id: {{order.orderid}} <span class="badge paid">Paid</span> <span
+      <h2>Order-id: {{item.id}} <span class="badge paid">Paid</span> <span
           class="badge unfulfilled">Unfulfilled</span></h2>
-      <p>Order date: Apr 14, 2023 · Order from <strong>{{ customer.name }}</strong> · Purchased via online</p>
+      <p>Order date: Apr 14, 2023 · Order from <strong>{{ item.contact_name }}</strong> · Purchased via online</p>
     </div>
 
     <div class="order-status">
@@ -23,19 +23,19 @@
 
     <app-cancel-order-modal *ngIf="showCancelModal" (close)="showCancelModal = false"></app-cancel-order-modal>
 
-    <div class="product-section">
+    <div class="product-section" >
       <h3>Products</h3>
-      <div class="product-item" *ngFor="let item of selectedItems">
+      <div class="product-item" *ngFor="let item of orderpro.orders">
         <img [src]="item.image" alt="{{ item.name }}">
         <div class="product-info">
-          <h4>{{ item.name }}</h4>
+          <h4>{{ item.product_name }}</h4>
           <!-- <p>SKU: {{ item.sku }}</p> -->
           <!-- {{ item.color }}  -->
           <p>{{ item.description }}</p>
           <p>Quantity: {{ item.qty }}</p>
         </div>
         <div class="product-status">Unfulfilled</div>
-        <div class="product-price">₹{{ item.price }}</div>
+        <div class="product-price">₹{{ item.product_price }}</div>
       </div>
     </div>
 
@@ -57,28 +57,28 @@
       <p>Carry With care</p>
     </div>
 
-    <div class="customer-info">
+    <div class="customer-info" *ngFor="let item of orderdet">
       <h4>Customer Details</h4>
-      <p><strong>{{ customer.name }}</strong></p>
+      <p><strong>{{ item.contact_name }}</strong></p>
       <p>Total: {{ customer.totalOrders }} order(s)</p>
     </div>
 
-    <div class="shipping-address">
+    <div class="shipping-address" *ngFor="let item of orderdet">
       <h4>Delivery Address</h4>
-      <p>{{ shippingAddress.name }}</p>
-      <p>{{ shippingAddress.houseno }}, {{ shippingAddress.streetname }},</p>
-      <p>{{ shippingAddress.city }}, {{ shippingAddress.state }}, </p>
-      <p>{{ shippingAddress.pincode }} </p>
+      <p>{{ item.contact_name }}</p>
+      <p>{{ item.house_number }}, {{ item.street_name }},</p>
+      <p>{{ item.city_name }}, {{ item.state_name }}, </p>
+      <p>{{ item.pincode }} </p>
     </div>
 
-    <div class="contact-info">
+    <div class="contact-info" *ngFor="let item of orderdet">
       <h4>Contact Information</h4>
-      <p>{{ contact.email }}</p>
-      <p>{{ contact.phone }}</p>
+      <p>{{ item.contact_name }}</p>
+      <p>{{ item.contact_number }}</p>
     </div>
-    <div class="res-info">
+    <div class="res-info" *ngFor="let item of orderpro.orders">
       <h4>Resturant Details</h4>
-      <p>{{ resturant.name }}</p>
+      <p>{{ item.restaurant_name }}</p>
       <p>{{  resturant.location }}</p>
       <p>{{  resturant.fassai }}</p>
     </div>

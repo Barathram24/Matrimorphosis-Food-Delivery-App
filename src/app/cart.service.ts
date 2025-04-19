@@ -1,13 +1,31 @@
-// src/app/services/cart.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { environment } from './env';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class CartService {
+  private apiUrl = environment.apiUrl;
+
   constructor(private http: HttpClient) {}
 
-  getSelectedItems(): Observable<any[]> {
-    return this.http.get<any[]>('http://localhost:3000/api/selected-items');
+  getCartItems(userId: string) {
+    return this.http.get(`${this.apiUrl}/cart`, {
+      params: { user_id: userId }
+    });
+  }
+
+  addToCart(item: {
+    user_id: string;
+    restaurant_id: number;
+    product_id: number;
+    qty: number;
+  }) {
+    return this.http.post(`${this.apiUrl}/cart`, item);
+  }
+
+  removeFromCart(cartId: number) {
+    return this.http.delete(`${this.apiUrl}/cart/${cartId}`);
   }
 }

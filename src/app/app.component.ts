@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router'; // ✅ Step 1: import Router
+import { Router, RouterModule } from '@angular/router'; // ✅ Step 1: import Router
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  imports:[RouterModule],
+  standalone: true
 })
 export class AppComponent {
   title = 'FOOD_DELIVERY_APP';

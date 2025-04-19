@@ -5,11 +5,12 @@ import { MatCardModule } from '@angular/material/card'; // for mat-card
 import { MatButtonModule } from '@angular/material/button'; // for mat-button
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Pipe, PipeTransform } from '@angular/core';
-import { CancelOrderModalComponent } from '../../cancel-order-modal/cancel-order-modal.component';
+import { CancelOrderModalComponent } from '../cancel-order-modal/cancel-order-modal.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-order-details',
-  imports: [CommonModule, MatCardModule, MatButtonModule, CancelOrderModalComponent],
+  imports: [CommonModule, MatCardModule, MatButtonModule, CancelOrderModalComponent,HttpClientModule],
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.scss']  // not `styleUrl`
 })
@@ -76,13 +77,26 @@ resturant={
   showCancelModal = false;
 
   trackingStatus = 'Your order is out for delivery 🚴';
-
-  constructor(private router: Router,private sanitizer: DomSanitizer) {}
+  constructor(private router: Router,private sanitizer: DomSanitizer,private http:HttpClient) {}
+  public orderdet:any[] = [];
+  public orderpro:any=null;
+  public proname:any[]=[];
+  fetchorder(){
+    this.http.get('http://localhost:3000/orders?user_id=1').subscribe((res: any) => {
+      this.orderdet = res.data;
+      this.orderpro=res.data[0];
+      // this.proname=res.data[0];
+      // this.orderdet.orders.forEach((item: any))
+      console.log("Pro item",this.proname);
+      console.log("order Items:", this.orderdet);
+  })}
   ngOnInit() {
     const address = `${this.shippingAddress.houseno} ${this.shippingAddress.streetname}, ${this.shippingAddress.city}, ${this.shippingAddress.state} ${this.shippingAddress.pincode}`;
     const googleMapLink = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
     this.mapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(googleMapLink);
+    this.fetchorder();
   }
+ 
   cancelOrder() {
     this.router.navigate(['./order-sucess']);
   }
@@ -96,4 +110,5 @@ resturant={
     console.log('Navigating to order-checkout...');
     this.router.navigate(['/']);
   }
+  
 }
