@@ -113,6 +113,7 @@ public updatecart(){
     this.fetchdetails();
     // this.updatecart();
 // this.loadCartItems();
+    this.placeOrder();
     this.calculateTotals();
   }
   // loadCartItems() {
@@ -220,14 +221,6 @@ decreaseQty(item: any) {
         discount: this.discount,
         delivery: this.delivery,
         total: this.total,
-        items: this.selectedItems.flatMap(group =>
-          group.items.map((item: any) => ({
-            product_id: item.productId,
-            qty: item.qty,
-            price: item.price,
-            restaurant_id: group.restaurantId
-          }))
-        )
       };
   
       this.http.post('http://localhost:3000/orders', payload).subscribe({
