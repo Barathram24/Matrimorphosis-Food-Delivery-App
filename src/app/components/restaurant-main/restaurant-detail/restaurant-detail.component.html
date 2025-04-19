@@ -1,0 +1,15 @@
+<h2>{{ restaurant?.name }}</h2>
+<p>{{ restaurant?.location }} • {{ restaurant?.deliveryTime }}</p>
+
+<div *ngFor="let item of restaurant?.menu" class="menu-item">
+  <div class="menu-info">
+    <h4>{{ item.name }}</h4>
+    <p>₹{{ item.price }} • ⭐ {{ item.rating }}</p>
+    <p>{{ item.description }}</p>
+  </div>
+  <div class="menu-image">
+    <img [src]="item.image" alt="{{ item.name }}" />
+    <button>Add</button>
+  </div>
+</div>
+

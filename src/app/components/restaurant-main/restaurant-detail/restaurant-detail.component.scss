@@ -1,0 +1,17 @@
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .menu-info {
+    max-width: 70%;
+  }
+  
+  .menu-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+  

@@ -1,0 +1,60 @@
+@import '../../../styles/variables.scss';
+
+.header {
+  padding: 16px 0;
+  background-color: $white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .logo {
+    height: 40px;
+  }
+  
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    
+    .nav-link {
+      color: $gray-dark;
+      text-decoration: none;
+      font-weight: 500;
+      
+      &:hover {
+        color: $primary-color;
+      }
+    }
+    
+    .btn {
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      
+      &.btn-outline {
+        border: 1px solid $gray-dark;
+        background: transparent;
+        color: $gray-dark;
+        
+        .arrow-icon {
+          display: inline-block;
+          margin-left: 4px;
+        }
+      }
+      
+      &.btn-dark {
+        background-color: $black;
+        color: $white;
+        border: none;
+      }
+    }
+  }
+}
