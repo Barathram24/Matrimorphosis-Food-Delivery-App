@@ -19,4 +19,9 @@ export class RestaurantDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id')!; // convert id to number
     this.restaurant = this.restaurantService.getRestaurantById(id);
   }
+  addToCart(item: any): void {
+    this.cart.push(item);
+    console.log('Item added to cart:', item);
+  
+}
 }

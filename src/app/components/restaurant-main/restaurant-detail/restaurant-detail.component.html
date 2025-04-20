@@ -1,15 +1,22 @@
-<h2>{{ restaurant?.name }}</h2>
-<p>{{ restaurant?.location }} • {{ restaurant?.deliveryTime }}</p>
-
-<div *ngFor="let item of restaurant?.menu" class="menu-item">
-  <div class="menu-info">
-    <h4>{{ item.name }}</h4>
-    <p>₹{{ item.price }} • ⭐ {{ item.rating }}</p>
-    <p>{{ item.description }}</p>
-  </div>
-  <div class="menu-image">
-    <img [src]="item.image" alt="{{ item.name }}" />
-    <button>Add</button>
+<div class="container mt-5">
+  <h2 class="mb-4">Restaurant Menu</h2>
+  <div class="row">
+    <div *ngFor="let item of menuItems" class="col-12 mb-4">
+      <div class="card h-100">
+        <!-- Updated image source binding -->
+        <img [src]="'/images/' + item.product_image" class="card-img-top" alt="{{ item.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.name }}</h5>
+          <p class="card-text">
+            {{ item.description }}<br>
+            ⭐ {{ item.rating }}<br>
+            ₹ {{ item.price }}
+          </p>
+          <!-- Add to Cart button -->
+          <button class="btn btn-primary" (click)="addToCart(item)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
