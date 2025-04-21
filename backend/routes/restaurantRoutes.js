@@ -1,10 +1,8 @@
 const express = require("express");
-
-const restaurantsController = require("../controllers/restaurants.controller.js");
-
 const router = express.Router();
+const restaurantController = require("../controller/restaurantController"); // ✅ Correct import
 
-router.get("/", restaurantsController.getRestaurants);
-router.get("/:id/products", restaurantsController.getProducts);
+router.get("/", restaurantController.getRestaurants);
+
 
 module.exports = router;
