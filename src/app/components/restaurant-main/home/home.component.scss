@@ -1,0 +1,121 @@
+.restaurant-slider-section {
+    background: linear-gradient(135deg, #ffe0e9 0%, #fff8e1 100%);
+    padding: 4rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Title styling */
+  .restaurant-slider-section h4 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+  
+  /* Card styling */
+  .slider-card {
+    width: 100%;
+    max-width: 22rem;
+    border: none;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: #fff;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    opacity: 0;
+    animation: fadeInSlide 1s ease-in-out forwards;
+  }
+  
+  /* Card Image */
+  .slider-card img {
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  /* Card text */
+  .slider-card .card-body {
+    padding: 1.2rem;
+  }
+  
+  .slider-card .card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2c2c2c;
+  }
+  
+  .slider-card .card-text {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.4;
+  }
+  
+  /* Fade-in slide animation */
+  @keyframes fadeInSlide {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 576px) {
+    .slider-card {
+      max-width: 90%;
+    }
+  
+    .restaurant-slider-section h4 {
+      font-size: 1.5rem;
+    }
+  }
+  .restaurant-slider-section {
+    position: relative;
+    height: 400px; /* Updated height */
+  }
+  
+  .card {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .card-img-top {
+    height: 320px; /* Adjusted image height */
+    object-fit: cover;
+  }
+  
+  .card-body {
+    padding: 10px;
+  }
+  .restaurant-slider-section {
+    position: relative;
+    height: 400px; /* Updated height */
+  }
+  
+  .card {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .card-img-top {
+    height: 400px; /* Increased image height */
+    object-fit: cover;
+  }
+  
+  .card-body {
+    padding: 10px;
+  }
+  
+  /* Optional: Center the text */
+  h2 {
+    color: #FF5722; /* Dark orange color */
+    font-weight: bold;
+  }
+  
+  
+  
