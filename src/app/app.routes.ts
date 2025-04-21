@@ -9,14 +9,14 @@ import { RestaurantListComponent } from './components/restaurant-main/restaurant
 import { RestaurantDetailComponent } from './components/restaurant-main/restaurant-detail/restaurant-detail.component';
 
 export const routes: Routes = [
-  // { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent },
   // {
   //   path: '',
   //   component: OrderCheckoutComponent
   // },
   { path: 'order-success', component: OrderSuccessComponent},
   {
-    path: '',
+    path: 'order-details',
     component: OrderDetailsComponent
   },
   {

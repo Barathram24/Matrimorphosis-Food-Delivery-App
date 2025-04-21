@@ -9,37 +9,43 @@ import { HttpClient } from '@angular/common/http';
 export class CancelOrderModalComponent {
   // @Output() close = new EventEmitter<void>();
   // @Input() orderUUID!: string; 
-  constructor(private router: Router,private http: HttpClient) { }
+  // constructor(private router: Router,private http: HttpClient) { }
 
   // onClose() {
   //   this.close.emit(); // optional if you want to notify parent
   //   this.router.navigate(['/']);
   // }
-  public Uuid:any[]=[];
-  public fetch(){
-    this.http.get("http://localhost:3000/orders?user_id=1").subscribe((res:any)=>{
-      this.Uuid=res.data;
-      console.log(this.Uuid);
-    })
-  }
-  ngOnInit(): void {
-    this.fetch();
-    this.onClose();
-  }
-  public onClose() {
-    if (!this.Uuid) {
-      console.error('Order UUID is required to cancel order');
-      return;
-    }
+  constructor(private router: Router, private http: HttpClient) {}
 
-    this.http.delete(`/orders/${this.Uuid}`).subscribe({
-      next: () => {
-        alert('Order cancelled successfully');
-        this.router.navigate(['/order-checkout']);
+  ngOnInit(): void {
+    this.cancelLatestOrder();
+  }
+
+  cancelLatestOrder() {
+    this.http.get('http://localhost:3000/orders?user_id=1').subscribe({
+      next: (res: any) => {
+        const latestOrder = res?.data?.[0]; // Get the first order
+        if (!latestOrder || !latestOrder.id) {
+          console.error('No valid order found to cancel.');
+          alert('No order found to cancel.');
+          return;
+        }
+
+        const orderId = latestOrder.id;
+        this.http.delete(`http://localhost:3000/orders/orders/${orderId}`).subscribe({
+          next: () => {
+            alert('Order cancelled successfully');
+            this.router.navigate(['/order-checkout']);
+          },
+          error: (err) => {
+            console.error('Error cancelling order:', err);
+            alert('Failed to cancel the order. Please try again.');
+          }
+        });
       },
       error: (err) => {
-        console.error('Error cancelling order', err);
-        alert('Failed to cancel the order. Please try again.');
+        console.error('Error fetching latest order:', err);
+        alert('Failed to retrieve order data.');
       }
     });
   }
