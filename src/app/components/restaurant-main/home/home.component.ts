@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { RestaurantService } from 'src/app/services/restaurant.service';
+import { RestaurantService } from '../../services/restaurant.service';
 
 @Component({
   selector: 'app-home',

@@ -32,7 +32,7 @@ export class CancelOrderModalComponent {
         }
 
         const orderId = latestOrder.id;
-        this.http.delete(`http://localhost:3000/orders/orders/${orderId}`).subscribe({
+        this.http.delete(`http://localhost:3000/orders/${orderId}`).subscribe({
           next: () => {
             alert('Order cancelled successfully');
             this.router.navigate(['/order-checkout']);

@@ -10,13 +10,13 @@ import { RestaurantDetailComponent } from './components/restaurant-main/restaura
 
 export const routes: Routes = [
   // { path: '', component: HomeComponent },
-  {
-    path: '',
-    component: OrderCheckoutComponent
-  },
+  // {
+  //   path: '',
+  //   component: OrderCheckoutComponent
+  // },
   { path: 'order-success', component: OrderSuccessComponent},
   {
-    path: 'order-details',
+    path: '',
     component: OrderDetailsComponent
   },
   {

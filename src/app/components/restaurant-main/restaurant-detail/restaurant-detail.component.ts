@@ -9,6 +9,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./restaurant-detail.component.scss']
 })
 export class RestaurantDetailComponent implements OnInit {
+  restaurantId!: number;
+  menuItems: any[] = [];
+  cart: any[] = []; 
   restaurant: any;
   cartData = {
     user_id: 1,  // Replace with actual logged-in user's ID
@@ -21,12 +24,23 @@ export class RestaurantDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private restaurantService: RestaurantService,
     private http: HttpClient
+    
   ) {}
 
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id')!; // convert id to number
     this.restaurant = this.restaurantService.getRestaurantById(id);
     this.cartData.restaurant_id = this.restaurant.id;  // Set restaurant id from the details
+    this.restaurantId = +this.route.snapshot.paramMap.get('id')!;
+
+    this.restaurantService.getRestaurantById(this.restaurantId).subscribe(
+      (data: any[]) => {
+        this.menuItems = data;
+      },
+      error => {
+        console.error('Error loading restaurant menu:', error);
+      }
+    );
   }
 
   addToCart(productId: number) {

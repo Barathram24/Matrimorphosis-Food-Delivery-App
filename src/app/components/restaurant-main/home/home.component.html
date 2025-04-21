@@ -29,7 +29,7 @@
                 <h1 class="card-title fw-bold">FOOD DELIVERY</h1>
                 <p class="card-text text-muted">FROM RESTAURANTS</p>
                 <p class="offer-text fw-bold">UPTO 60% OFF</p>
-                <a [routerLink]="['/restaurants']" class="btn btn-primary rounded-pill px-4">Explore</a>
+                <!-- <a [routerLink]="['/restaurants']" class="btn btn-primary rounded-pill px-4">Explore</a> -->
               </div>
             </div>
             <div class="col-md-4 d-flex align-items-center justify-content-center">
@@ -73,7 +73,7 @@ min-height: 560px;
   <div class="d-flex justify-content-center">
     <div *ngIf="filteredRestaurants.length" class="card slider-card shadow-lg"
          style="width: 32rem; border-radius: 20px; overflow: hidden;">
-      <a [routerLink]="['/restaurant', filteredRestaurants[currentIndex].id]" 
+      <!-- <a [routerLink]="['/restaurant', filteredRestaurants[currentIndex].id]"  -->
          style="text-decoration: none; color: inherit;">
          <img
          [src]="'assets/' + filteredRestaurants[currentIndex].id + '.jpg'"
@@ -87,7 +87,7 @@ min-height: 560px;
             {{ filteredRestaurants[currentIndex].name }}
           </h4>
         </div>
-      </a>
+      <!-- </a> -->
     </div>
   </div>
 </div>
