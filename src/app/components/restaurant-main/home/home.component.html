@@ -1,265 +1,226 @@
 
 <!-- Home Section (Full Screen) -->
 <section class="hero-section d-flex flex-column justify-content-center">
-    <div class="container py-5">
-      <!-- Animated Header -->
-      <div class="row justify-content-center mb-5">
-        <div class="col-md-10 text-center">
-          <h1 class="animated-text text-white mb-4">Delicious Food, <span class="highlight">Delivered Fast</span></h1>
-          <p class="text-white lead mb-5">Order from your favorite restaurants or get anything delivered in minutes</p>
+  <div class="container py-5">
+    <div class="position-absolute top-0 end-0 m-4">
+      <a routerLink="/cart" 
+         class="btn rounded-pill px-4 py-2 fw-bold shadow" 
+         style="background-color: darkorange; color: white; border: none;">
+         View Cart
+      </a>
+    </div>
+    <!-- Animated Header -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-10 text-center">
+        <h1 class="animated-text text-white mb-4">Delicious Food, <span class="highlight">Delivered Fast</span></h1>
+        <p class="text-white lead mb-5">Order from your favorite restaurants or get anything delivered in minutes</p>
+      </div>
+    </div>
+  
+   
+
+    <!-- Service Cards (Larger & Equal Size) -->
+    <div class="row service-cards-container">
+      <div class="col-md-6">
+        <div class="card service-card border-0 mb-4">
+          <div class="row g-0">
+            <div class="col-md-8">
+              <div class="card-body p-4">
+                <h1 class="card-title fw-bold">FOOD DELIVERY</h1>
+                <p class="card-text text-muted">FROM RESTAURANTS</p>
+                <p class="offer-text fw-bold">UPTO 60% OFF</p>
+                <a [routerLink]="['/restaurants']" class="btn btn-primary rounded-pill px-4">Explore</a>
+              </div>
+            </div>
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
+              <img src="https://cdn-icons-png.flaticon.com/512/1046/1046751.png" class="img-fluid" alt="Food Delivery" style="max-width: 150px;">
+            </div>
+          </div>
         </div>
       </div>
+      <div class="col-md-6">
+        <div class="card service-card border-0">
+          <div class="row g-0">
+            <div class="col-md-8">
+              <div class="card-body p-4">
+                <h1 class="card-title fw-bold">DINE-IN</h1>
+                <p class="card-text text-muted">SKIP THE WAIT, BOOK YOUR PLATE</p>
+                <p class="invisible offer-text fw-bold">PLACEHOLDER</p>
+                
+                <a href="#" class="btn btn-primary rounded-pill px-4">Explore</a>
+
+              </div>
+            </div>
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
+              <img src="https://cdn-icons-png.flaticon.com/512/679/679821.png" class="img-fluid" alt="Genie Delivery" style="max-width: 150px;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Food Categories Section -->
+<section class="restaurant-slider-section py-5" style="
+background: url('c:\Users\Admin\Downloads\bg.jpg') no-repeat center center;
+background-size: cover;
+min-height: 560px;
+">
+<div class="container">
+  <h2 class="text-center fw-bold mb-5" style="color: #FF5722;">🍽️ Recommended For You</h2>
+
+  <div class="d-flex justify-content-center">
+    <div *ngIf="filteredRestaurants.length" class="card slider-card shadow-lg"
+         style="width: 32rem; border-radius: 20px; overflow: hidden;">
+      <a [routerLink]="['/restaurant', filteredRestaurants[currentIndex].id]" 
+         style="text-decoration: none; color: inherit;">
+         <img
+         [src]="'assets/' + filteredRestaurants[currentIndex].id + '.jpg'"
+         alt="{{ filteredRestaurants[currentIndex].name }}"
+         class="card-img-top"
+         style="height: 420px; object-fit: cover"
+       />
+
+        <div class="card-body text-center">
+          <h4 class="card-title fw-semibold text-primary">
+            {{ filteredRestaurants[currentIndex].name }}
+          </h4>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Zomato Download Section -->
+<section class="food-delivery-download-section position-relative py-5">
+  <div class="background-image"></div>
+  <div class="container position-relative z-3">
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-8">
+        <div class="download-content text-center p-5 rounded-4 shadow-lg">
+          <div class="mb-4">
+            
+            <h2 class="display-4 fw-bold text-dark mb-3">QuickBite</h2>
+            <p class="lead text-muted mb-4">Your Favorite Meals, Delivered in a Snap!</p>
+          </div>
+          
+          <div class="features mb-4">
+            <div class="row g-3">
+              <div class="col-md-4">
+                <div class="feature-card bg-light p-3 rounded-3">
+                  <i class="bi bi-clock-fill text-primary fs-2 mb-2"></i>
+                  <h5 class="mb-1">Fast Delivery</h5>
+                  <p class="small text-muted">Under 30 minutes</p>
+                </div>
+                
     
-     
-  
-      <!-- Service Cards (Larger & Equal Size) -->
-      <div class="row service-cards-container">
-        <div class="col-md-6">
-          <div class="card service-card border-0 mb-4">
-            <div class="row g-0">
-              <div class="col-md-8">
-                <div class="card-body p-4">
-                  <h1 class="card-title fw-bold">FOOD DELIVERY</h1>
-                  <p class="card-text text-muted">FROM RESTAURANTS</p>
-                  <p class="offer-text fw-bold">UPTO 60% OFF</p>
-                  <a [routerLink]="['/restaurants']" class="btn btn-primary rounded-pill px-4">Explore</a>
+
+              </div>
+              <div class="col-md-4">
+                <div class="feature-card bg-light p-3 rounded-3">
+                  <i class="bi bi-shield-check text-primary fs-2 mb-2"></i>
+                  <h5 class="mb-1">Safe Payment</h5>
+                  <p class="small text-muted">100% secure</p>
                 </div>
               </div>
-              <div class="col-md-4 d-flex align-items-center justify-content-center">
-                <img src="https://cdn-icons-png.flaticon.com/512/1046/1046751.png" class="img-fluid" alt="Food Delivery" style="max-width: 150px;">
+              <div class="col-md-4">
+                <div class="feature-card bg-light p-3 rounded-3">
+                  <i class="bi bi-star-fill text-primary fs-2 mb-2"></i>
+                  <h5 class="mb-1">Best Quality</h5>
+                  <p class="small text-muted">Premium restaurants</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card service-card border-0">
-            <div class="row g-0">
-              <div class="col-md-8">
-                <div class="card-body p-4">
-                  <h1 class="card-title fw-bold">DINE-IN</h1>
-                  <p class="card-text text-muted">SKIP THE WAIT, BOOK YOUR PLATE</p>
-                  <p class="invisible offer-text fw-bold">PLACEHOLDER</p>
-                  
-                  <a href="#" class="btn btn-primary rounded-pill px-4">Explore</a>
-  
-                </div>
-              </div>
-              <div class="col-md-4 d-flex align-items-center justify-content-center">
-                <img src="https://cdn-icons-png.flaticon.com/512/679/679821.png" class="img-fluid" alt="Genie Delivery" style="max-width: 150px;">
-              </div>
-            </div>
+          
+          <div class="download-buttons d-flex justify-content-center gap-3">
+            <a href="#" class="btn btn-outline-primary btn-lg d-flex align-items-center">
+              <i class="bi bi-google-play me-2"></i>
+              Google Play
+            </a>
+            <a href="#" class="btn btn-primary btn-lg d-flex align-items-center">
+              <i class="bi bi-apple me-2"></i>
+              App Store
+            </a>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  
-  <!-- Food Categories Section -->
-  <!-- Food Categories Section -->
-<section class="py-5 bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center mb-4">
-          <h2 class="fw-bold">What's on your mind?</h2>
-        </div>
-      </div>
-  
-      <!-- First Row -->
-      <div class="row text-center g-4 mb-4">
-        <div class="col-md-4">
-          <div class="food-item" (click)="filterByCategory('Cake')" style="cursor: pointer;">
-            <img src="https://img.freepik.com/premium-photo/birthday-cake-candles_1048944-5991912.jpg" alt="Cake" class="img-fluid rounded-circle mb-2" style="width: 120px; height: 120px; object-fit: cover;">
-            <p class="mb-0 fw-medium">CAKE</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="food-item" (click)="filterByCategory('Hotel')" style="cursor: pointer;">
-            <img src="https://img.freepik.com/premium-photo/masala-dosa-is-south-indian-meal-served-with-sambhar-coconut-chutney-selective-focus_466689-22925.jpg" alt="Dosa" class="img-fluid rounded-circle mb-2" style="width: 120px; height: 120px; object-fit: cover;">
-            <p class="mb-0 fw-medium">DOSA</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="food-item"  (click)="filterByCategory('Biriyani')" style="cursor: pointer;">
-            <img src="https://media.istockphoto.com/id/1453499717/photo/chicken-biryani.jpg" alt="Biryani" class="img-fluid rounded-circle mb-2" style="width: 120px; height: 120px; object-fit: cover;">
-            <p class="mb-0 fw-medium">BIRIYANI</p>
-          </div>
-        </div>
-      </div>
-  
-      <!-- Second Row -->
-      <div class="row text-center g-4 mb-4">
-        <div class="col-md-4">
-          <div class="food-item"  (click)="filterByCategory('Cake')" style="cursor: pointer;">
-            <img src="https://img.freepik.com/premium-photo/chocolate-milkshake.jpg" alt="Milkshake" class="img-fluid rounded-circle mb-2" style="width: 120px; height: 120px; object-fit: cover;">
-            <p class="mb-0 fw-medium">MILKSHAKE</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="food-item"  (click)="filterByCategory('Tea')" style="cursor: pointer;">
-            <img src="https://img.freepik.com/premium-photo/hot-black-tea.jpg" alt="Tea" class="img-fluid rounded-circle mb-2" style="width: 120px; height: 120px; object-fit: cover;">
-            <p class="mb-0 fw-medium">TEA</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="food-item"  (click)="filterByCategory('Coffee')" style="cursor: pointer;">
-            <img src="https://img.freepik.com/free-photo/cup-coffee.jpg" alt="Coffee" class="img-fluid rounded-circle mb-2" style="width: 120px; height: 120px; object-fit: cover;">
-            <p class="mb-0 fw-medium">COFFEE</p>
-          </div>
-        </div>
-      </div>
-  
-      <!-- Third Row -->
-      <div class="row text-center g-4">
-        <div class="col-md-4">
-          <div class="food-item"  (click)="filterByCategory('Pasta')" style="cursor: pointer;">
-            <img src="https://img.freepik.com/free-photo/penne-pasta.jpg" style="width: 120px; height: 120px; object-fit: cover;" class="img-fluid rounded-circle mb-2">
-            <p class="mb-0 fw-medium">PASTA</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="food-item" (click)="filterByCategory('Pizza')" style="cursor: pointer;">
-            <img src="https://img.freepik.com/free-photo/delicious-pizza.jpg" style="width: 120px; height: 120px; object-fit: cover;" class="img-fluid rounded-circle mb-2">
-            <p class="mb-0 fw-medium">PIZZA</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="food-item"  (click)="filterByCategory('Juice')" style="cursor: pointer;">
-            <img src="https://img.freepik.com/free-photo/pineapple-juice.jpg" alt="Juice" class="img-fluid rounded-circle mb-2" style="width: 120px; height: 120px; object-fit: cover;">
-            <p class="mb-0 fw-medium">JUICE</p>
-          </div>
-        </div>
-      </div>
-  
-    </div>
-  </section>
-  
-  
-  <!-- Zomato Download Section -->
-  <section class="food-delivery-download-section position-relative py-5">
-    <div class="background-image"></div>
-    <div class="container position-relative z-3">
-      <div class="row justify-content-center">
-        <div class="col-md-10 col-lg-8">
-          <div class="download-content text-center p-5 rounded-4 shadow-lg">
-            <div class="mb-4">
-              
-              <h2 class="display-4 fw-bold text-dark mb-3">QuickBite</h2>
-              <p class="lead text-muted mb-4">Your Favorite Meals, Delivered in a Snap!</p>
-            </div>
-            
-            <div class="features mb-4">
-              <div class="row g-3">
-                <div class="col-md-4">
-                  <div class="feature-card bg-light p-3 rounded-3">
-                    <i class="bi bi-clock-fill text-primary fs-2 mb-2"></i>
-                    <h5 class="mb-1">Fast Delivery</h5>
-                    <p class="small text-muted">Under 30 minutes</p>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="feature-card bg-light p-3 rounded-3">
-                    <i class="bi bi-shield-check text-primary fs-2 mb-2"></i>
-                    <h5 class="mb-1">Safe Payment</h5>
-                    <p class="small text-muted">100% secure</p>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="feature-card bg-light p-3 rounded-3">
-                    <i class="bi bi-star-fill text-primary fs-2 mb-2"></i>
-                    <h5 class="mb-1">Best Quality</h5>
-                    <p class="small text-muted">Premium restaurants</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="download-buttons d-flex justify-content-center gap-3">
-              <a href="#" class="btn btn-outline-primary btn-lg d-flex align-items-center">
-                <i class="bi bi-google-play me-2"></i>
-                Google Play
-              </a>
-              <a href="#" class="btn btn-primary btn-lg d-flex align-items-center">
-                <i class="bi bi-apple me-2"></i>
-                App Store
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <style>
-  .food-delivery-download-section {
-    position: relative;
-    overflow: hidden;
-    color: #333;
+  </div>
+</section>
+
+<style>
+.food-delivery-download-section {
+  position: relative;
+  overflow: hidden;
+  color: #333;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://b.zmtcdn.com/data/pictures/chains/5/18808035/cd867dbcd742b6cf022939a4a455ba05.jpg?fit=around|960:500&crop=960:500;*,*');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5);
+  z-index: 1;
+}
+
+.download-content {
+  position: relative;
+  background: #ffffff; /* Pure white */
+  backdrop-filter: none; /* remove blur */
+  border: 1px solid rgba(0, 0, 0, 0.05); /* softer border for white */
+  transform: perspective(1000px) rotateX(2deg) scale(0.95);
+  transition: all 0.3s ease;
+}
+
+
+.download-content:hover {
+  transform: perspective(1000px) rotateX(0) scale(1);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+}
+
+.feature-card h5 {
+  color: #222; /* Darker heading */
+  font-weight: 600;
+}
+
+.feature-card p {
+  color: #555; /* Slightly darker muted text */
+  font-weight: 500;
+}
+
+
+.download-buttons .btn-outline-primary,
+.download-buttons .btn-primary {
+  background-color: #ff6600 !important;
+  color: white !important;
+  border-color: #ff6600 !important;
+}
+
+.download-buttons .btn-outline-primary:hover,
+.download-buttons .btn-primary:hover {
+  background-color: #e65c00 !important;
+  border-color: #e65c00 !important;
+  transform: translateY(-5px);
+}
+
+
+@media (max-width: 768px) {
+  .download-buttons {
+    flex-direction: column;
   }
   
-  .background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
+  .download-buttons .btn {
     width: 100%;
-    height: 100%;
-    background-image: url('../../../../../public/bg.jpg');
-      background-size: cover;
-    background-position: center;
-    filter: brightness(0.5);
-    z-index: 1;
+    margin-bottom: 10px;
   }
-  
-  .download-content {
-    position: relative;
-    background: #ffffff; /* Pure white */
-    backdrop-filter: none; /* remove blur */
-    border: 1px solid rgba(0, 0, 0, 0.05); /* softer border for white */
-    transform: perspective(1000px) rotateX(2deg) scale(0.95);
-    transition: all 0.3s ease;
-  }
-  
-  
-  .download-content:hover {
-    transform: perspective(1000px) rotateX(0) scale(1);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
-  }
-  
-  .feature-card h5 {
-    color: #222; /* Darker heading */
-    font-weight: 600;
-  }
-  
-  .feature-card p {
-    color: #555; /* Slightly darker muted text */
-    font-weight: 500;
-  }
-  
-  
-  .download-buttons .btn-outline-primary,
-  .download-buttons .btn-primary {
-    background-color: #ff6600 !important;
-    color: white !important;
-    border-color: #ff6600 !important;
-  }
-  
-  .download-buttons .btn-outline-primary:hover,
-  .download-buttons .btn-primary:hover {
-    background-color: #e65c00 !important;
-    border-color: #e65c00 !important;
-    transform: translateY(-5px);
-  }
-  
-  
-  @media (max-width: 768px) {
-    .download-buttons {
-      flex-direction: column;
-    }
-    
-    .download-buttons .btn {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  }
-  </style>
-  
-  
+}
+</style>
+

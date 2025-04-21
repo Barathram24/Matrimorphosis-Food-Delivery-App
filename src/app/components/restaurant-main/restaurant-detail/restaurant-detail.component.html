@@ -1,10 +1,17 @@
 <div class="container mt-5">
   <h2 class="mb-4">Restaurant Menu</h2>
   <div class="row">
-    <div *ngFor="let item of menuItems" class="col-12 mb-4">
+    <div *ngFor="let item of menuItems let i=index" class="col-12 mb-4">
       <div class="card h-100">
-        <!-- Updated image source binding -->
-        <img [src]="'/images/' + item.product_image" class="card-img-top" alt="{{ item.name }}">
+          <img
+            [src]="'assets/' + restaurantId + 'f.jpg'"
+            class="card-img-top"
+            alt="{{ item.name }}"
+            style="width: 150px; height: 150px; object-fit: cover;"
+            />
+
+
+
         <div class="card-body">
           <h5 class="card-title">{{ item.name }}</h5>
           <p class="card-text">
