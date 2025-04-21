@@ -5,6 +5,9 @@ const app = express();
 // const port = 3000;
 
 // Route imports
+// const restaurantsRoutes = require("./routes/restaurants.routes.js");
+const cartRoutes = require("./routes/cart.routes.js");
+const ordersRoutes = require("./routes/orders.routes.js");
 const restaurantsRoutes = require("./routes/restaurantRoutes.js");
 const productRoutes = require("./routes/productRoutes.js");
 
