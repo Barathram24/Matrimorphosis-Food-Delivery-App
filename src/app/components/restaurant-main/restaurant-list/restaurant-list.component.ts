@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; // ✅ import ActivatedRoute
-
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-restaurant-list',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './restaurant-list.component.html',
   styleUrls: ['./restaurant-list.component.scss']
 })

@@ -3,7 +3,7 @@
     <div class="row">
       <div *ngFor="let restaurant of restaurants" class="col-md-4 mb-4">
         <!-- ✅ THIS is the line -->
-        <!-- <a [routerLink]="['/restaurant', restaurant.id]" style="text-decoration: none; color: inherit;"> -->
+        <a [routerLink]="['/restaurant', restaurant.id]" style="text-decoration: none; color: inherit;">
           <div class="card shadow-sm h-100">
             <img [src]="restaurant.image" class="card-img-top" alt="{{ restaurant.name }}">
             <div class="card-body">
@@ -15,7 +15,7 @@
               </p>
             </div>
           </div>
-        <!-- </a> -->
+        </a>
       </div>
     </div>
   </div>

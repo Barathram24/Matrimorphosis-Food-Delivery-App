@@ -79,6 +79,7 @@ export class OrderCheckoutComponent implements OnInit {
             restaurantId: item.restaurant_id,
             restaurantName: item.restaurant_name,
             restaurantLocation: item.restaurant_location,
+            restaurantImg:`data:image/jpg;base64,${item.restaurant_img}`,
             items: []
           };
         }
@@ -88,7 +89,7 @@ export class OrderCheckoutComponent implements OnInit {
           price: item.product_price,
           qty: item.qty,
           description: item.product_description,
-          image: 'placeholder.jpg' // or use item.product_image if available
+          image: `data:image/jpg;base64,${item.product_img}` // or use item.product_image if available
         });
       });
   

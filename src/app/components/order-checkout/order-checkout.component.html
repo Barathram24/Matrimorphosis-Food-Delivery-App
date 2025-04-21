@@ -17,7 +17,7 @@
         <div *ngFor="let group of selectedItems" class="resname">
           <!-- Restaurant Info -->
           <div class="restaurant-info">
-            <img src="restaurant-placeholder.jpg" alt="Restaurant" class="restaurant-image">
+            <img [src]="group.restaurantImg" alt="Restaurant" class="restaurant-img" />
             <div>
               <h3>{{ group.restaurantName }}</h3>
               <small>{{ group.restaurantLocation }}</small>
